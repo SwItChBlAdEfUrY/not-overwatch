@@ -1,12 +1,12 @@
 var fps = "60" //target fps
 
+var width = 0;
+var hight = 0;
+
+var canvas = document.getElementById("canvas");
 
 function init() {
     console.log("Init start");
-
-    var canvas = document.getElementById("canvas");
-    canvas.style.width = window.innerWidth();
-    canvas.style.height = 
 
     resize();
 
@@ -38,8 +38,17 @@ function draw() {
 
 }
 
-function resize() {
+window.onresize = function (event) {
+    resize();
+};
 
+function resize() {
+    console.log("resizing...");
+    canvas.height = window.innerHeight;
+    canvas.width = (window.innerHeight / 9) * 16;
+    width = document.getElementById("canvas").style.width;
+    height = document.getElementById("canvas").style.height;
+    
 }
 
 init();

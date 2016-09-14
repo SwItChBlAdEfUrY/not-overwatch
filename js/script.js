@@ -4,6 +4,7 @@ var width = 0;
 var hight = 0;
 
 var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
 
 function init() {
     console.log("Init start");
@@ -34,7 +35,8 @@ function update() {
 }
 
 function draw() {
-
+    ctx.fillStyle = "Black"
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
 
 }
 

@@ -40,16 +40,14 @@ function draw() {
 
 }
 
-window.onresize = function (event) {
+window.onresize = function(event) {
     resize();
 };
 
 function resize() {
     console.log("resizing...");
-    canvas.height = window.innerHeight;
-    canvas.width = (window.innerHeight / 9) * 16;
-    width = document.getElementById("canvas").style.width;
-    height = document.getElementById("canvas").style.height;
+    canvas.height = 800;
+    canvas.width = 1200;
     
 }
 

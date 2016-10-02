@@ -1,12 +1,13 @@
 var fps = "60" //target fps
 
-var width = 0;
-var hight = 0;
-
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 
+//init variables
+var width = 0;
+var hight = 0;
 var loadPercent = 0;
+var screen = 0;
 
 function init() {
     console.log("Init start");
@@ -46,11 +47,11 @@ function preLoad(){
     ];
     for(var i = 0; i < images.length; i++ ) 
     {
-        loadPercent = 100/images.length*i;
-        loadScreen();
-
         var imageObject = new Image();
         imageObject.src = images[i];
+
+        loadPercent = 100/images.length*i;
+        loadScreen();
     }
 }
 
@@ -86,7 +87,26 @@ function update() {
 
 }
 
-function draw() {
+function draw(){
+    //clear the canvas
+    ctx.fillStyle = "Black" 
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    if(screen == 0){
+        drawMainMenu();
+    }
+    else if(screen == 1){
+        drawGame();
+    }
+}
+
+function drawMainMenu(){
+    ctx.fillStyle = "White"
+    ctx.font="50px Georgia";
+    ctx.fillText("Main Menu",10,canvas.height/2+20);
+}
+
+function drawGame() {
 
     drawBackground();
 
@@ -95,6 +115,22 @@ function draw() {
     drawPlayer();
 
     drawPlayers();
+}
+
+function drawBackground(){
+    
+}
+
+function drawPlatforms(){
+
+}
+
+function drawPlayer(){
+
+}
+
+function drawPlayers(){
+
 }
 
 window.onresize = function(event) {

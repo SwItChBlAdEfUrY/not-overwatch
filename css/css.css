@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'BigNoodle';
+    src: url('/not-overwatch/font/big_noodle_titling.tff');
+}
+
 canvas {
     padding-left: 0;
     padding-right: 0;

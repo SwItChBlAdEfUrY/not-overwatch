@@ -5,3 +5,7 @@ canvas {
     margin-right: auto;
     display: block;
 }
+
+body{
+    background-image:url("/not-overwatch/img/wlppr/wlpprtile.jpg");
+}

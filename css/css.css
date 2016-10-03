@@ -1,9 +1,11 @@
-@font-face {
-    font-family: 'BigNoodle';
-    src: url('/not-overwatch/font/big_noodle_titling.tff');
-}
+@font-face { 
+    font-family: "Overwatch"; 
+    src: url("http://us.battle.net/forums/static/fonts/bignoodletoo/bignoodletoo.woff") 
+        format('woff'); 
+    }
 
 canvas {
+    font-family: 'BigNoodle';
     padding-left: 0;
     padding-right: 0;
     margin-left: auto;

@@ -1,6 +1,6 @@
 var fps = "60" //target fps
 
-var version = "0.1.0" //version
+var version = "BETA - 0.1.0" //version
 
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
@@ -11,54 +11,17 @@ var hight = 0;
 var loadPercent = 0;
 var screen = 0;
 var mouseClicked = 1;
+var mousepos = 0;
 
 var num = 0;
 
 function init() {
-    console.log("Init start");
+    //console.log("Init start");
 
     resize();
 
-    preLoad();
-
     window.requestAnimationFrame(mainLoop);
-    console.log("Init stop");
-}
-
-function preLoad(){
-    var images = [
-        "/not-overwatch/img/char/Ana.png", //0
-        "/not-overwatch/img/char/Bastion.png",//1
-        "/not-overwatch/img/char/Dva.png",//2
-        "/not-overwatch/img/char/Genji.png",//3
-        "/not-overwatch/img/char/Hanzo.png",//4
-        "/not-overwatch/img/char/Junkrat.png",//5
-        "/not-overwatch/img/char/Lucio.png",//6
-        "/not-overwatch/img/char/McCree.png",//7
-        "/not-overwatch/img/char/Mei.png",//8
-        "/not-overwatch/img/char/Mercy.png",//9
-        "/not-overwatch/img/char/Pharah.png",//10
-        "/not-overwatch/img/char/Reaper.png",//11
-        "/not-overwatch/img/char/Reinhardt.png",//12
-        "/not-overwatch/img/char/Roadhog.png",//13
-        "/not-overwatch/img/char/Soldier76.png",//14
-        "/not-overwatch/img/char/Symmetra.png",//15
-        "/not-overwatch/img/char/Tobjorn.png",//16
-        "/not-overwatch/img/char/Tracer.png",//17
-        "/not-overwatch/img/char/Widowmaker.png",//18
-        "/not-overwatch/img/char/Winston.png",//19
-        "/not-overwatch/img/char/Zarya.png",//20
-        "/not-overwatch/img/char/Zenyetta.png",//21
-        "/not-overwatch/img/etc/overwatch-logo-white.png"//22
-    ];
-    for(var i = 0; i < images.length; i++ ) 
-    {
-        var imageObject = new Image();
-        imageObject.src = images[i];
-
-        loadPercent = 100/images.length*i;
-        loadScreen();
-    }
+    //console.log("Init stop");
 }
 
 function loadScreen(){
@@ -88,7 +51,9 @@ function mainLoop() {
 }
 
 function input() {
-
+    if(mouseClicked == 1){
+        //console.log("wow, the left mouse button button was clicked!");
+    }
 }
 
 function update() {
@@ -103,7 +68,10 @@ function draw(){
     if(screen == 0){
         drawMainMenu();
     }
-    else if(screen == 1){
+    else if(screen == 4){
+        drawOptions();
+    }
+    else if(screen == 10){
         drawGame();
     }
 }
@@ -113,8 +81,18 @@ function drawMainMenu(){
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     ctx.fillStyle = "White"
-    ctx.font="50px Overwatch";
-    ctx.fillText("Main Menu",10,canvas.height/2+20);
+
+    ctx.drawImage(document.getElementById("logo"),15,9);
+    //ctx.font="60px overwatch";
+    //ctx.fillText("not-OVERWATCH",10,70);
+    ctx.font="15px blizz";
+    ctx.fillText(version,20,90);
+    ctx.font="60px overwatch";
+    ctx.fillText("play",10,300);
+    ctx.fillText("Hero gallery",10,360);
+    ctx.fillText("friends",10,420);
+    ctx.fillText("Options",10,480);
+
 }
 
 function drawGame() {
@@ -149,7 +127,7 @@ window.onresize = function(event) {
 };
 
 function resize() {
-    console.log("resizing...");
+    //console.log("resizing...");
     canvas.height = 800;
     canvas.width = 1200;
 }
@@ -160,11 +138,16 @@ function getMousePos(canvas, evt) {
       x: evt.clientX - rect.left,
       y: evt.clientY - rect.top
     };
-}
+  }
+  canvas.addEventListener('mousemove', function(evt) {
+    var mousePos = getMousePos(canvas, evt);
+    //console.log('Mouse position: ' + mousePos.x + ',' + mousePos.y);
+  }, false);
 
 function canvasClicked(){
     mouseClicked = 1;
-    setTimeout(function(){mouseClicked = 0;}, 500);
+    setTimeout(function(){mouseClicked = 0;}, 30);
 }
+
 
 init();

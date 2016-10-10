@@ -80,6 +80,9 @@ function drawMainMenu(){
     ctx.fillStyle = "Black"
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+    ctx.imageSmoothingEnabled = false;
+    ctx.drawImage(document.getElementById("Genji"),10,50,canvas.width,canvas.width * document.getElementById("Genji").height / document.getElementById("Genji").width);
+
     ctx.fillStyle = "White"
 
     ctx.drawImage(document.getElementById("logo"),15,9);
@@ -92,6 +95,7 @@ function drawMainMenu(){
     ctx.fillText("Hero gallery",10,360);
     ctx.fillText("friends",10,420);
     ctx.fillText("Options",10,480);
+    ctx.fillText("Genji",canvas.width-150,480);
 
 }
 

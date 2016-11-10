@@ -4,22 +4,29 @@ var version = "BETA - 0.1.0" //version
 
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
+    ctx.imageSmoothingEnabled = false;
 
 
 //init variables
+var developer = true; //DEVELOPER
+
+var mainMenuRan = false;
 var buttons = [];
 var width = 0;
 var hight = 0;
 var loadPercent = 0;
 var screen = 0;
-var mouseClicked = 1;
-var mousepos = {
+var mouseClicked = 0;
+var mousePos = {
     x:0,
     y:0
 };
 
+var chars = ["Ana","Bastion","Dva","Genji","Hanzo","Junkrat","Lucio","McCree","Mei","Mercy","Roadhog","Soldier76","Symmetra","Tobjorn","Tracer","Widowmaker","Winston","Zarya","Zenyetta"];
 
+var charName = chars[getRandomIntInclusive(0, chars.length)];
 
+devLog(charName);
 
 var num = 0;
 
@@ -30,7 +37,7 @@ function init() {
 
 canvas.addEventListener('mousemove', function(evt) {
     mousePos = getMousePos(canvas, evt);
-    console.log('Mouse position: ' + mousePos.x + ',' + mousePos.y);
+    //console.log('Mouse position: ' + mousePos.x + ',' + mousePos.y);
   }, false);
 
   function getMousePos(canvas, evt) {
@@ -51,6 +58,8 @@ canvas.addEventListener('mousemove', function(evt) {
     
     //console.log("Init stop");
 }
+
+
 
 function loadScreen(){
     ctx.fillStyle = "Black"
@@ -92,16 +101,15 @@ function update() {
 
 }
 
-function getTextWH(text, font) {
-    // re-use canvas object for better performance
-    var canvas = getTextWidth.canvas || (getTextWidth.canvas = document.createElement("canvas"));
-    var context = canvas.getContext("2d");
-    context.font = font;
-    var metrics = context.measureText(text);
-    return {
-        w: metrics.width,
-        h: metrics.height
-    }
+function getTextW(text, font) {
+    ctx.save();
+    ctx.font = font;
+    var size = ctx.measureText(text);
+
+    ctx.restore();
+
+    return size.width;
+    
 }
 
 function draw(){
@@ -117,6 +125,9 @@ function draw(){
     }
     else if(screen == 10){
         drawGame();
+    }
+    else{
+        screen = 0;
     }
 }
 
@@ -135,18 +146,32 @@ function canvasClicked(){
     setTimeout(function(){mouseClicked = 0;}, 30);
 }
 
+function getRandomIntInclusive(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
 function drawButton(button){
     
     ctx.fillStyle = button.color;
     var fontrn = button.size + " " + button.font;
     ctx.font = fontrn;
-    ctx.fillText(button.text,button.x,button.y);
+    ctx.fillText(button.text,button.vx,button.y);
     
 }
 
 function drawPlayer(player,x,y,rot){
 
 }
+
+function devLog(text){
+    if(developer){
+        console.log(text);
+    }
+}
+
+
 
 
 init();

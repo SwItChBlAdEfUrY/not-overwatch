@@ -26,6 +26,9 @@ var chars = ["Ana","Bastion","Dva","Genji","Hanzo","Junkrat","Lucio","McCree","M
 
 var charName = chars[getRandomIntInclusive(0, chars.length)];
 
+window.alert("If this is your first time running this, pleas allow the usage of 'unsafe' scripts.");
+
+
 devLog(charName);
 
 var num = 0;

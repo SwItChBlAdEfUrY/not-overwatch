@@ -28,7 +28,7 @@ function drawMainMenu(){
     ctx.font="15px blizz";
     ctx.fillText(version,20,90);
     ctx.font="60px overwatch";
-    ctx.fillText(charName,canvas.width - getTextW(charName, ctx.font),480);
+    ctx.fillText(charName,canvas.width - getTextW(charName, ctx.font) + 10,480);
 
     for(var i = 0; i < buttons.length; i++){
         if(mousePos.x >= buttons[i].x && mousePos.x <= getTextW(buttons[i].text, buttons[i].font + " " + buttons[i].size) && mousePos.y >= buttons[i].y -50 && mousePos.y <= buttons[i].y -50 + buttons[i].height){

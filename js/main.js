@@ -174,7 +174,4 @@ function devLog(text){
     }
 }
 
-
-
-
 init();

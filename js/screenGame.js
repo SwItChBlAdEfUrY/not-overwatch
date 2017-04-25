@@ -1,18 +1,15 @@
+var drawGameRan = false;
+
+function drawGameInit(){
+    drawGameRan = true
+    //init function
+
+}
+
 function drawGame() {
-
-    drawBackground();
-
-    drawPlatforms();
-
-    drawPlayer();
-
-    drawPlayers();
-}
-
-function drawBackground(){
+    if(drawGameRan == false){
+        drawGameInit();
+    }
+    //drawring code goes here
     
-}
-
-function drawPlatforms(){
-
 }

@@ -37,7 +37,19 @@ function drawMainMenu(){
 
         if(mouseClicked == 1 && mousePos.x >= buttons[i].x && mousePos.x <= getTextW(buttons[i].text, buttons[i].font + " " + buttons[i].size) && mousePos.y >= buttons[i].y -50 && mousePos.y <= buttons[i].y -50 + buttons[i].height){
             buttons[i].color = "yellow";
-            console.log("you clicked button " + i);
+            switch(i){
+                case 0:
+                    buttonPlay();
+                    break;
+                case 1:
+                    buttonHeroGallery();
+                    break;
+                case 2:
+                    buttonFriends();
+                    break;
+                case 3:
+                    buttonOptions();
+            }
         }
     }
 
@@ -48,5 +60,20 @@ function drawMainMenu(){
     }
 
     
+
+}
+
+
+function buttonPlay(){
+
+}
+
+function buttonHeroGallery(){
+
+}
+function buttonFriends(){
+
+}
+function buttonOptions(){
 
 }
